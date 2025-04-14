@@ -6,10 +6,16 @@ public class Retangulo {
 
 
     public void setLargura(float largura){
+        if(largura < 0) {
+            return;
+        }
         this.largura = largura;
     }
 
     public void setAltura(float altura){
+        if(altura < 0){
+            return;
+        }
         this.altura = altura;
     }
 

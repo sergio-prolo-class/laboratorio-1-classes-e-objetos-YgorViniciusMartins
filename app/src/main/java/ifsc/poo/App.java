@@ -112,12 +112,15 @@ public class App {
         produto1.setDesconto(6);
         produto2.setDesconto(12);
 
-
-
         System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco());
         System.out.println("Nome: " + produto2.getNome() + ", Preço: " + produto2.getPreco());
 
+        System.out.println(produto1.anuncio());
+        System.out.println(produto2.anuncio());
 
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe Livro:");
 
 
 

@@ -1,35 +1,46 @@
 package ifsc.poo;
 
+import java.util.Objects;
+
 public class Produto {
     private String nome;
-    private int preco;
+    private int preco; //Alternaria o preço para um float, pois como inteiro, não podemos especificar os centavos
     private int desconto;
 
-    void setNome (String nome){
+    public void setNome (String nome){
+        if(Objects.equals(nome, "")){
+            return;
+        }
         this.nome = nome;
     }
 
-    String getNome(){
+    public String getNome(){
         return this.nome;
     }
 
-    void setPreco(int preco){
+    public void setPreco(int preco){
+        if(preco < 0){
+            return;
+        }
         this.preco = preco;
     }
 
-    float getPreco(){
-        if(this.desconto != 0){
-            float preco = this.preco * ((float)((1 - this.desconto) / 100));
-            return preco;
-        }
-        return this.preco;
+    public float getPreco(){
+        return this.preco * (1 - (float) this.desconto/100);
     }
 
-    void setDesconto(int desconto){
+    public void setDesconto(int desconto){
+        if(desconto < 0 || desconto > 100){
+            return;
+        }
         this.desconto = desconto;
     }
 
-    int getDesconto(){
+    public int getDesconto(){
         return this.desconto;
+    }
+
+    public String anuncio(){
+        return this.nome + ": de R$ " + String.format("%.2f" ,(float) this.preco) + " por APENAS R$ " + getPreco() + "!";
     }
 }

@@ -6,7 +6,7 @@ public class Relogio {
     byte segundo;
 
     public void ajustaHora(byte hora, byte minuto, byte segundo){
-        if(hora > 24 || minuto > 60 || segundo > 60){
+        if(hora > 24 || minuto > 60 || segundo > 60 || hora < 0 || minuto < 0 || segundo < 0){
             System.out.println("Hora inválida");
             return;
         }
