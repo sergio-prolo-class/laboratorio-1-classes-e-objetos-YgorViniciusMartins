@@ -42,7 +42,7 @@ public class App {
 
         System.out.println("-----+-----+-----+-----+");
 
-        System.out.println("Classe Retangulo");
+        System.out.println("Classe Retangulo:");
         Retangulo retangulo = new Retangulo();
 
         retangulo.setLargura(5);
@@ -76,21 +76,49 @@ public class App {
 
         System.out.println("-----+-----+-----+-----+");
 
-        System.out.println("Classe relógio");
+        System.out.println("Classe relógio:");
         Relogio relogio = new Relogio();
 
         relogio.ajustaHora((byte) 14, (byte) 58, (byte) 32);
         System.out.println(relogio.getHora());
+        System.out.println(relogio.getHoraAMPM());
 
         for(int i = 0; i < 2; i++){
             relogio.avancaMinuto();
         }
 
         System.out.println(relogio.getHora());
+        System.out.println(relogio.getHoraAMPM());
+
 
         relogio.ajustaHora((byte) 23, (byte) 59, (byte) 59);
         relogio.avancaSegundo();
         System.out.println(relogio.getHora());
+        System.out.println(relogio.getHoraAMPM());
+
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe produto:");
+        Produto produto1 = new Produto();
+        produto1.setNome("Geladeira");
+        produto1.setPreco(832);
+        System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco());
+
+        Produto produto2 = new Produto();
+        produto2.setNome("Microondas");
+        produto2.setPreco(499);
+        System.out.println("Nome: " + produto2.getNome() + ", Preço: " + produto2.getPreco());
+
+        produto1.setDesconto(6);
+        produto2.setDesconto(12);
+
+
+
+        System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco());
+        System.out.println("Nome: " + produto2.getNome() + ", Preço: " + produto2.getPreco());
+
+
+
 
 
     }

@@ -16,7 +16,23 @@ public class Relogio {
     }
 
     public String getHora(){
-        return this.hora + ":" + this.minuto + ":" + this.segundo;
+        String hora = String.format("%02d", this.hora);
+        String minuto = String.format("%02d", this.minuto);
+        String segundo = String.format("%02d", this.segundo);
+        return hora + ":" + minuto + ":" + segundo;
+    }
+
+    public String getHoraAMPM(){
+        String hora;
+        if(this.hora <= 12){
+            hora = String.format("%02d", this.hora) + "am";
+        } else {
+            hora = String.format("%02d", this.hora - 12) + "pm";
+        }
+        String minuto = String.format("%02d", this.minuto) + "m";
+        String segundo = String.format("%02d", this.segundo) + "s";
+
+        return hora + ":" + minuto + ":" + segundo;
     }
 
     public void avancaHora(){
