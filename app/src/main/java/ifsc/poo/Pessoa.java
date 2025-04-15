@@ -1,13 +1,11 @@
 package ifsc.poo;
 
-import java.util.Objects;
-
 public class Pessoa {
     private String nome;
     private int idade;
 
     public void setNome(String nome){
-        if(Objects.equals(nome, "")){
+        if(nome.isEmpty()){
             System.out.println("Nome inválido");
             return;
         }

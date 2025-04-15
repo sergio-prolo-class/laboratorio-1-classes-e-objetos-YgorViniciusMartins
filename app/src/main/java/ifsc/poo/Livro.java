@@ -1,7 +1,5 @@
 package ifsc.poo;
 
-import java.util.Objects;
-
 public class Livro {
     private String titulo;
     private String autor;
@@ -11,10 +9,9 @@ public class Livro {
     private int[] pagina_cap = new int[30];
     private int paginas_lidas = 0;
     private int qtd_cap = 0;
-    private String capitulo_atual;
 
     public void setTitulo(String titulo) {
-        if (Objects.equals(titulo, "")) {
+        if (titulo.isEmpty()) {
             return;
         }
         this.titulo = titulo;
@@ -25,7 +22,7 @@ public class Livro {
     }
 
     public void setAutor(String autor) {
-        if (Objects.equals(autor, "")) {
+        if (autor.isEmpty()) {
             return;
         }
         this.autor = autor;
@@ -86,7 +83,7 @@ public class Livro {
     }
 
     public void setTitulos_cap(String titulo_cap, int inicio_cap) {
-        if (Objects.equals(titulo_cap, "")) {
+        if (titulo_cap.isEmpty()) {
             return;
         }
         this.titulos_cap[this.qtd_cap] = titulo_cap;
@@ -99,7 +96,7 @@ public class Livro {
     }
 
     private void setPagina_cap(int pagina_cap) {
-        if (pagina_cap < 0) {
+        if (pagina_cap < 0 && pagina_cap > this.paginas) {
             return;
         }
         this.pagina_cap[this.qtd_cap] = pagina_cap;
@@ -114,7 +111,11 @@ public class Livro {
     }
 
     public void lerPaginas(int qtd){
-        this.paginas_lidas += qtd;
+        if(this.paginas_lidas + qtd > this.paginas) {
+            this.paginas_lidas = this.paginas;
+        } else {
+            this.paginas_lidas += qtd;
+        }
     }
 
     public String lendoAtual(){
@@ -126,4 +127,7 @@ public class Livro {
         return null;
     }
 
+    public int getPaginas_lidas(){
+        return this.paginas_lidas;
+    }
 }

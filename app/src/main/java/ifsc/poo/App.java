@@ -3,7 +3,6 @@
  */
 package ifsc.poo;
 
-
 import java.util.Random;
 
 public class App {
@@ -34,10 +33,10 @@ public class App {
             pessoa2.felizAniversario();
         }
 
-        System.out.println("Idade Alice: " + pessoa1.getIdade());
+        System.out.println("Idade Alice: " + pessoa1.getIdade()); //Exibindo idades da Alice e do Bruno
         System.out.println("Idade Bruno: " + pessoa2.getIdade());
 
-        pessoa1.setIdade(-44);
+        pessoa1.setIdade(-44); //Exemplos de entradas inválidas
         pessoa2.setNome("");
 
         System.out.println("-----+-----+-----+-----+");
@@ -45,17 +44,17 @@ public class App {
         System.out.println("Classe Retangulo:");
         Retangulo retangulo = new Retangulo();
 
-        retangulo.setLargura(5);
+        retangulo.setLargura(5); //Construção do retângulo
         retangulo.setAltura(4);
 
-        System.out.println("Área: " + retangulo.getArea());
+        System.out.println("Área: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
         System.out.println("Perímetro: " + retangulo.getPerimetro());
 
-        Retangulo[] retangulos = new Retangulo[10];
+        Retangulo[] retangulos = new Retangulo[10]; //Criação de um vetor do tipo objeto Retangulo
         Random r = new Random();
         float maior_razao = 0;
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 10; i++){ //Função em que gera retângulos de forma aleatória, e verifica a maior razao entre area / perimetro
             System.out.println("Retangulo " + (i + 1) + " :");
             float altura = r.nextFloat(9) + 1; //Altura e largura entre 1 - 10
             float largura = r.nextFloat(9) + 1;
@@ -79,20 +78,20 @@ public class App {
         System.out.println("Classe relógio:");
         Relogio relogio = new Relogio();
 
-        relogio.ajustaHora((byte) 14, (byte) 58, (byte) 32);
-        System.out.println(relogio.getHora());
-        System.out.println(relogio.getHoraAMPM());
+        relogio.ajustaHora((byte) 14, (byte) 58, (byte) 32); //Hora inicial
+        System.out.println(relogio.getHora()); //Exibe a hora no formato de 24 horas
+        System.out.println(relogio.getHoraAMPM()); //Exibe a hora no formato de 12 horas
 
         for(int i = 0; i < 2; i++){
-            relogio.avancaMinuto();
+            relogio.avancaMinuto(); //Avança 2 minutos
         }
 
         System.out.println(relogio.getHora());
         System.out.println(relogio.getHoraAMPM());
 
 
-        relogio.ajustaHora((byte) 23, (byte) 59, (byte) 59);
-        relogio.avancaSegundo();
+        relogio.ajustaHora((byte) 23, (byte) 59, (byte) 59); //Determina uma nova hora
+        relogio.avancaSegundo(); //Incrementa um segundo
         System.out.println(relogio.getHora());
         System.out.println(relogio.getHoraAMPM());
 
@@ -100,8 +99,8 @@ public class App {
 
         System.out.println("Classe produto:");
         Produto produto1 = new Produto();
-        produto1.setNome("Geladeira");
-        produto1.setPreco(832);
+        produto1.setNome("Geladeira"); //Nome do produto
+        produto1.setPreco(832); //Preço do produto
         System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco());
 
         Produto produto2 = new Produto();
@@ -109,10 +108,10 @@ public class App {
         produto2.setPreco(499);
         System.out.println("Nome: " + produto2.getNome() + ", Preço: " + produto2.getPreco());
 
-        produto1.setDesconto(6);
+        produto1.setDesconto(6); //Desconto em % do produto
         produto2.setDesconto(12);
 
-        System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco());
+        System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco()); //Exibe nome do produto e seu preço na promoção
         System.out.println("Nome: " + produto2.getNome() + ", Preço: " + produto2.getPreco());
 
         System.out.println(produto1.anuncio());
@@ -124,12 +123,12 @@ public class App {
 
         Livro livro = new Livro();
 
-        livro.setTitulo("O Senhor dos Anéis - A Sociedade do Anel");
-        livro.setAutor("J. R. R. Tolkien");
-        livro.setGeneros("Fantasia", "Aventura");
-        livro.setPaginas(464);
+        livro.setTitulo("O Senhor dos Anéis - A Sociedade do Anel"); //Título do livro
+        livro.setAutor("J. R. R. Tolkien"); //Autor do livro
+        livro.setGeneros("Fantasia", "Aventura"); //Gêneros do Livro
+        livro.setPaginas(464); //Quantidade de páginas
 
-        String[] todos_caps = {
+        String[] todos_caps = { //Títulos de todos os capítulos presentes no livro
         "Uma Festa Muito Esperada",
         "A Sombra do Passado",
         "Três é Demais",
@@ -154,12 +153,15 @@ public class App {
         "A Partida da Sociedade"
         };
 
+        //Página de início ed cada capítulo
         int[] inicio_cap = {1, 23, 44, 66, 89, 110, 131, 154, 176, 197, 219, 240, 261, 282, 301, 320, 341, 361, 383, 403, 423, 446};
 
+        //Loop para setar os títulos de capítulos e suas páginas de início
         for (int i = 0; i < inicio_cap.length; i++) {
             livro.setTitulos_cap(todos_caps[i], inicio_cap[i]);
         }
 
+        //Este bloco exibe as informações que foram setadas anteriormente
         System.out.println("Título: " + livro.getTitulo());
         System.out.println("Autor: " + livro.getAutor());
         System.out.println("Gêneros: " + livro.getGeneros()[0] + ", " + livro.getGeneros()[1]);
@@ -172,11 +174,13 @@ public class App {
             System.out.println(paginas_reg[i]);
         }
 
+        //Comportamento do livro durante a leitura
         livro.lerPaginas(90);
         System.out.println(livro.lendoAtual());
         livro.lerPaginas(300);
         System.out.println(livro.lendoAtual());
         livro.lerPaginas(100);
+        System.out.println(livro.getPaginas_lidas());
     }
 }
 

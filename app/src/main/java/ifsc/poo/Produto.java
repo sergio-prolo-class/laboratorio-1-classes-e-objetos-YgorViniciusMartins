@@ -1,14 +1,12 @@
 package ifsc.poo;
 
-import java.util.Objects;
-
 public class Produto {
     private String nome;
     private int preco; //Alternaria o preço para um float, pois como inteiro, não podemos especificar os centavos
     private int desconto;
 
     public void setNome (String nome){
-        if(Objects.equals(nome, "")){
+        if(nome.isEmpty()){
             return;
         }
         this.nome = nome;
