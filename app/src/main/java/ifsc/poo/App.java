@@ -122,8 +122,61 @@ public class App {
 
         System.out.println("Classe Livro:");
 
+        Livro livro = new Livro();
 
+        livro.setTitulo("O Senhor dos Anéis - A Sociedade do Anel");
+        livro.setAutor("J. R. R. Tolkien");
+        livro.setGeneros("Fantasia", "Aventura");
+        livro.setPaginas(464);
 
+        String[] todos_caps = {
+        "Uma Festa Muito Esperada",
+        "A Sombra do Passado",
+        "Três é Demais",
+        "Um Atalho para Cogumelos",
+        "Uma Conspiração Desmascarada",
+        "A Floresta Velha",
+        "Em Casa de Tom Bombadil",
+        "Névoa nas Colinas dos Túmulos",
+        "No Pônei Empinado",
+        "Passolargo",
+        "Um Faca na Noite",
+        "Voo para o Vau",
+        "Muitos Encontros",
+        "O Conselho de Elrond",
+        "O Anel Vai para o Sul",
+        "Uma Jornada no Escuro",
+        "A Ponte de Khazad-dûm",
+        "Lothlórien",
+        "O Espelho de Galadriel",
+        "Adeus a Lórien",
+        "O Grande Rio",
+        "A Partida da Sociedade"
+        };
+
+        int[] inicio_cap = {1, 23, 44, 66, 89, 110, 131, 154, 176, 197, 219, 240, 261, 282, 301, 320, 341, 361, 383, 403, 423, 446};
+
+        for (int i = 0; i < inicio_cap.length; i++) {
+            livro.setTitulos_cap(todos_caps[i], inicio_cap[i]);
+        }
+
+        System.out.println("Título: " + livro.getTitulo());
+        System.out.println("Autor: " + livro.getAutor());
+        System.out.println("Gêneros: " + livro.getGeneros()[0] + ", " + livro.getGeneros()[1]);
+        System.out.println("Quantidade de Páginas: " + livro.getPaginas());
+        String[] capitulos_reg = livro.getTitulos_cap();
+        int[] paginas_reg = livro.getPagina_cap();
+        System.out.print("Titulos: ");
+        for (int i = 0; i < livro.getQtd_cap(); i++) {
+            System.out.println(capitulos_reg[i]);
+            System.out.println(paginas_reg[i]);
+        }
+
+        livro.lerPaginas(90);
+        System.out.println(livro.lendoAtual());
+        livro.lerPaginas(300);
+        System.out.println(livro.lendoAtual());
+        livro.lerPaginas(100);
     }
 }
 
