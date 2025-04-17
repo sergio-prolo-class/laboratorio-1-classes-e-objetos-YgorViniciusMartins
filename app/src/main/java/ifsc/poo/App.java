@@ -8,47 +8,61 @@ import java.util.Random;
 public class App {
     public static void main(String[] args) {
         System.out.println("Classe Lâmpada:");
-        Lampada lampada1 = new Lampada();     //Criação das lampadas
-        Lampada lampada2 = new Lampada();
+        Lampada lampada1 = new Lampada();     //Método construtor sem argumento, inicializa como false
+        Lampada lampada2 = new Lampada(true); //Método construtor com argumento, inicializa com parâemtro passado
 
-        lampada1.ligar(); //Setando estados das lâmpadas
-        lampada2.desligar();
-
-        System.out.println("Estado da lampada 1: " + lampada1.verEstado()); //Exibindo estados das lâmpadas
-        System.out.println("Estado da lampada 2: " + lampada2.verEstado());
+        System.out.println("Estado da lampada 1 sem parâmetro: " + lampada1.verEstado()); //Exibindo estados das lâmpadas
+        System.out.println("Estado da lampada 2 com parâmetro true: " + lampada2.verEstado());
 
         System.out.println("-----+-----+-----+-----+");
 
         System.out.println("Classe Pessoa:");
-        Pessoa pessoa1 = new Pessoa(); //Criação das pessoas
-        Pessoa pessoa2 = new Pessoa();
+        Pessoa pessoa1 = new Pessoa("563.558.712-00"); //Criação das pessoas
+        Pessoa pessoa2 = new Pessoa("974.502.412-00", "Alice");
+        Pessoa pessoa3 = new Pessoa("878.156.184-00", "Paulo", 33);
 
-        pessoa1.setNome("Alice"); //Criando pessoa Alice de 22 anos
-        pessoa1.setIdade(22);
+        System.out.println("Pessoa 1, nome: " + pessoa1.getNome() + ", idade: " + pessoa1.getIdade() + ", CPF: " + pessoa1.getCpf());
+        System.out.println("Pessoa 2, nome: " + pessoa2.getNome() + ", idade: " + pessoa2.getIdade() + ", CPF: " + pessoa2.getCpf());
+        System.out.println("Pessoa 3, nome: " + pessoa3.getNome() + ", idade: " + pessoa3.getIdade() + ", CPF: " + pessoa3.getCpf());
 
-        pessoa2.setNome("Bruno"); //Criando pessoa Bruno de 25 anos
-        pessoa2.setIdade(25);
-
-        for(int i = 0; i < 3; i++){ //Comemorando o aniversário bruno 3 vezes
-            pessoa2.felizAniversario();
+        if(!pessoa1.setNome("Bruno")){
+            System.out.println("Nome inválido");
+        }
+        if(!pessoa1.setIdade(25)){
+            System.out.println("Idade inválida");
         }
 
-        System.out.println("Idade Alice: " + pessoa1.getIdade()); //Exibindo idades da Alice e do Bruno
-        System.out.println("Idade Bruno: " + pessoa2.getIdade());
+        if(!pessoa2.setIdade(22)){
+            System.out.println("Idade inválida");
+        }
 
-        pessoa1.setIdade(-44); //Exemplos de entradas inválidas
-        pessoa2.setNome("");
+        System.out.println("Bruno está fazendo aniversário 3 vezes!");
+
+        for(int i = 0; i < 3; i++){ //Comemorando o aniversário bruno 3 vezes
+            pessoa1.felizAniversario();
+        }
+
+        System.out.println("Idade pessoa1: " + pessoa1.getIdade());
+        System.out.println("Idade pessoa2: " + pessoa2.getIdade()); //Exibindo idades da Alice e do Bruno
+
+        if(!pessoa3.setNome("")){
+            System.out.println("Nome inválido");
+        }
+        if(!pessoa3.setIdade(-32)){
+            System.out.println("Idade inválida");
+        }
 
         System.out.println("-----+-----+-----+-----+");
 
         System.out.println("Classe Retangulo:");
-        Retangulo retangulo = new Retangulo();
+        Retangulo retangulo = new Retangulo(5, 4);
+        Retangulo retangulo2 = new Retangulo(0, -2);
 
-        retangulo.setLargura(5); //Construção do retângulo
-        retangulo.setAltura(4);
+        System.out.println("Área retângulo: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
+        System.out.println("Perímetro retângulo: " + retangulo.getPerimetro());
 
-        System.out.println("Área: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
-        System.out.println("Perímetro: " + retangulo.getPerimetro());
+        System.out.println("Área retângulo inválido: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
+        System.out.println("Perímetro retângulo inválido: " + retangulo.getPerimetro());
 
         Retangulo[] retangulos = new Retangulo[10]; //Criação de um vetor do tipo objeto Retangulo
         Random r = new Random();
@@ -72,6 +86,14 @@ public class App {
         }
 
         System.out.println("Maior razão entre área e perímetro do retangulo: " + maior_razao);
+        System.out.println("Maior área: " + retangulo.getMaiorArea());
+        System.out.println("Maior perímetro: " + retangulo.getMaiorPerimetro());
+
+        Retangulo maior_perimetro = retangulo.maiorRetaguloPerimetro();
+        Retangulo maior_area = retangulo.maiorRetaguloPerimetro();
+
+        System.out.println("Dimensões maior retângulo em perímetro: " + maior_perimetro.getLargura() + ", " + maior_perimetro.getAltura() + ", " + maior_perimetro.getPerimetro());
+        System.out.println("Dimensões maior retângulo em área: " + maior_area.getLargura() + ", " + maior_area.getAltura() + ", " + maior_area.getArea());
 
         System.out.println("-----+-----+-----+-----+");
 
@@ -181,6 +203,7 @@ public class App {
         System.out.println(livro.lendoAtual());
         livro.lerPaginas(100);
         System.out.println(livro.getPaginas_lidas());
+
     }
 }
 
