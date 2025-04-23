@@ -101,5 +101,25 @@ public class App {
         System.out.println("-----+-----+-----+-----+");
 
         System.out.println("Classe Produto:");
+
+        Produto produto1 = new Produto("Geladeira", 599);
+        Produto produto2 = new Produto("Teclado", 99);
+        produto2.setDesconto(12);
+        Produto produto3 = new Produto("Computador", 1500);
+        Produto produto4 = new Produto("Celular", 300);
+        produto4.setDesconto(12);
+        Produto produto5 = new Produto("Microondas", 250);
+        System.out.println(produto1.getCodigo());
+
+        String[] registro = produto1.getRegistro();
+
+        for (int i = 0; i < produto1.getQtdProdutos(); i++) {
+            System.out.println(registro[i]);
+        }
+
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe Navio:");
+
     }
 }
