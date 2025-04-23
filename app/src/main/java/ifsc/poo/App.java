@@ -25,30 +25,30 @@ public class App {
         System.out.println("Pessoa 2, nome: " + pessoa2.getNome() + ", idade: " + pessoa2.getIdade() + ", CPF: " + pessoa2.getCpf());
         System.out.println("Pessoa 3, nome: " + pessoa3.getNome() + ", idade: " + pessoa3.getIdade() + ", CPF: " + pessoa3.getCpf());
 
-        if(!pessoa1.setNome("Bruno")){
+        if (!pessoa1.setNome("Bruno")) {
             System.out.println("Nome inválido");
         }
-        if(!pessoa1.setIdade(25)){
+        if (!pessoa1.setIdade(25)) {
             System.out.println("Idade inválida");
         }
 
-        if(!pessoa2.setIdade(22)){
+        if (!pessoa2.setIdade(22)) {
             System.out.println("Idade inválida");
         }
 
         System.out.println("Bruno está fazendo aniversário 3 vezes!");
 
-        for(int i = 0; i < 3; i++){ //Comemorando o aniversário bruno 3 vezes
+        for (int i = 0; i < 3; i++) { //Comemorando o aniversário bruno 3 vezes
             pessoa1.felizAniversario();
         }
 
         System.out.println("Idade pessoa1: " + pessoa1.getIdade());
         System.out.println("Idade pessoa2: " + pessoa2.getIdade()); //Exibindo idades da Alice e do Bruno
 
-        if(!pessoa3.setNome("")){
+        if (!pessoa3.setNome("")) {
             System.out.println("Nome inválido");
         }
-        if(!pessoa3.setIdade(-32)){
+        if (!pessoa3.setIdade(-32)) {
             System.out.println("Idade inválida");
         }
 
@@ -57,153 +57,49 @@ public class App {
         System.out.println("Classe Retangulo:");
         Retangulo retangulo = new Retangulo(5, 4);
         Retangulo retangulo2 = new Retangulo(0, -2);
+        //Retangulo retangulo3 = new Retangulo(10, 5);
+        //Retangulo retangulo4 = new Retangulo(8, 7);
+        retangulo.setLargura(100);
+//        retangulo2.setLargura(10);
+        retangulo2.setAltura(588);
 
-        System.out.println("Área retângulo: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
-        System.out.println("Perímetro retângulo: " + retangulo.getPerimetro());
+        System.out.println("Área retângulo 1: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
+        System.out.println("Perímetro retângulo 1: " + retangulo.getPerimetro());
 
-        System.out.println("Área retângulo inválido: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
-        System.out.println("Perímetro retângulo inválido: " + retangulo.getPerimetro());
+        System.out.println("Área retângulo inválido: " + retangulo2.getArea());  //Exibindo quais dimensões foram determinadas
+        System.out.println("Perímetro retângulo inválido: " + retangulo2.getPerimetro());
 
-        Retangulo[] retangulos = new Retangulo[10]; //Criação de um vetor do tipo objeto Retangulo
-        Random r = new Random();
-        float maior_razao = 0;
-
-        for(int i = 0; i < 10; i++){ //Função em que gera retângulos de forma aleatória, e verifica a maior razao entre area / perimetro
-            System.out.println("Retangulo " + (i + 1) + " :");
-            float altura = r.nextFloat(9) + 1; //Altura e largura entre 1 - 10
-            float largura = r.nextFloat(9) + 1;
-            retangulo.setAltura(altura);
-            retangulo.setLargura(largura);
-            retangulos[i] = retangulo;
-            float perimetro = retangulos[i].getPerimetro();
-            float area = retangulos[i].getArea();
-            float razao = area / perimetro;
-            if(razao > maior_razao){
-                maior_razao = razao;
-            }
-            System.out.println("Perímetro do Retangulo: " + perimetro);
-            System.out.println("Área do Retangulo: " + area);
-        }
-
-        System.out.println("Maior razão entre área e perímetro do retangulo: " + maior_razao);
         System.out.println("Maior área: " + retangulo.getMaiorArea());
-        System.out.println("Maior perímetro: " + retangulo.getMaiorPerimetro());
+        System.out.println("Menorr perímetro: " + retangulo.getMaiorPerimetro());
 
-        Retangulo maior_perimetro = retangulo.maiorRetaguloPerimetro();
-        Retangulo maior_area = retangulo.maiorRetaguloPerimetro();
+        Retangulo menor_perimetro = retangulo.menorRetaguloPerimetro();
+        Retangulo maior_area = retangulo.maiorRetaguloArea();
 
-        System.out.println("Dimensões maior retângulo em perímetro: " + maior_perimetro.getLargura() + ", " + maior_perimetro.getAltura() + ", " + maior_perimetro.getPerimetro());
+        System.out.println("Dimensões menor retângulo em perímetro: " + menor_perimetro.getLargura() + ", " + menor_perimetro.getAltura() + ", " + menor_perimetro.getPerimetro());
         System.out.println("Dimensões maior retângulo em área: " + maior_area.getLargura() + ", " + maior_area.getAltura() + ", " + maior_area.getArea());
 
         System.out.println("-----+-----+-----+-----+");
 
-        System.out.println("Classe relógio:");
-        Relogio relogio = new Relogio();
+        System.out.println("Classe Relógio:");
+        Relogio relogio1 = new Relogio((byte) 10);
+        Relogio relogio2 = new Relogio((byte) 15, (byte) 55);
+        Relogio relogio3 = new Relogio((byte) 21, (byte) 38, (byte) 59);
+        Relogio relogio_inv = new Relogio((byte) 51, (byte) -50, (byte) 78);
 
-        relogio.ajustaHora((byte) 14, (byte) 58, (byte) 32); //Hora inicial
-        System.out.println(relogio.getHora()); //Exibe a hora no formato de 24 horas
-        System.out.println(relogio.getHoraAMPM()); //Exibe a hora no formato de 12 horas
+        System.out.println("Relogio 1: " + relogio1.getHora()); //36000
+        System.out.println("Relogio 2: " + relogio2.getHora());
+        System.out.println("Relogio 3: " + relogio3.getHora()); // 77939
+        System.out.println("Relogio inválido: " + relogio_inv.getHora());
 
-        for(int i = 0; i < 2; i++){
-            relogio.avancaMinuto(); //Avança 2 minutos
-        }
+        int diferenca = relogio1.diferencaRelogio(relogio3);
+        relogio1.sincronizaRelogio(relogio3);
 
-        System.out.println(relogio.getHora());
-        System.out.println(relogio.getHoraAMPM());
+        System.out.println("Diferença relogio 1 e 3: " + diferenca);
+        System.out.println("Relogio 1 sincronizado com 3: " + relogio1.getHora());
 
-
-        relogio.ajustaHora((byte) 23, (byte) 59, (byte) 59); //Determina uma nova hora
-        relogio.avancaSegundo(); //Incrementa um segundo
-        System.out.println(relogio.getHora());
-        System.out.println(relogio.getHoraAMPM());
 
         System.out.println("-----+-----+-----+-----+");
 
-        System.out.println("Classe produto:");
-        Produto produto1 = new Produto();
-        produto1.setNome("Geladeira"); //Nome do produto
-        produto1.setPreco(832); //Preço do produto
-        System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco());
-
-        Produto produto2 = new Produto();
-        produto2.setNome("Microondas");
-        produto2.setPreco(499);
-        System.out.println("Nome: " + produto2.getNome() + ", Preço: " + produto2.getPreco());
-
-        produto1.setDesconto(6); //Desconto em % do produto
-        produto2.setDesconto(12);
-
-        System.out.println("Nome: " + produto1.getNome() + ", Preço: " + produto1.getPreco()); //Exibe nome do produto e seu preço na promoção
-        System.out.println("Nome: " + produto2.getNome() + ", Preço: " + produto2.getPreco());
-
-        System.out.println(produto1.anuncio());
-        System.out.println(produto2.anuncio());
-
-        System.out.println("-----+-----+-----+-----+");
-
-        System.out.println("Classe Livro:");
-
-        Livro livro = new Livro();
-
-        livro.setTitulo("O Senhor dos Anéis - A Sociedade do Anel"); //Título do livro
-        livro.setAutor("J. R. R. Tolkien"); //Autor do livro
-        livro.setGeneros("Fantasia", "Aventura"); //Gêneros do Livro
-        livro.setPaginas(464); //Quantidade de páginas
-
-        String[] todos_caps = { //Títulos de todos os capítulos presentes no livro
-        "Uma Festa Muito Esperada",
-        "A Sombra do Passado",
-        "Três é Demais",
-        "Um Atalho para Cogumelos",
-        "Uma Conspiração Desmascarada",
-        "A Floresta Velha",
-        "Em Casa de Tom Bombadil",
-        "Névoa nas Colinas dos Túmulos",
-        "No Pônei Empinado",
-        "Passolargo",
-        "Um Faca na Noite",
-        "Voo para o Vau",
-        "Muitos Encontros",
-        "O Conselho de Elrond",
-        "O Anel Vai para o Sul",
-        "Uma Jornada no Escuro",
-        "A Ponte de Khazad-dûm",
-        "Lothlórien",
-        "O Espelho de Galadriel",
-        "Adeus a Lórien",
-        "O Grande Rio",
-        "A Partida da Sociedade"
-        };
-
-        //Página de início ed cada capítulo
-        int[] inicio_cap = {1, 23, 44, 66, 89, 110, 131, 154, 176, 197, 219, 240, 261, 282, 301, 320, 341, 361, 383, 403, 423, 446};
-
-        //Loop para setar os títulos de capítulos e suas páginas de início
-        for (int i = 0; i < inicio_cap.length; i++) {
-            livro.setTitulos_cap(todos_caps[i], inicio_cap[i]);
-        }
-
-        //Este bloco exibe as informações que foram setadas anteriormente
-        System.out.println("Título: " + livro.getTitulo());
-        System.out.println("Autor: " + livro.getAutor());
-        System.out.println("Gêneros: " + livro.getGeneros()[0] + ", " + livro.getGeneros()[1]);
-        System.out.println("Quantidade de Páginas: " + livro.getPaginas());
-        String[] capitulos_reg = livro.getTitulos_cap();
-        int[] paginas_reg = livro.getPagina_cap();
-        System.out.print("Titulos: ");
-        for (int i = 0; i < livro.getQtd_cap(); i++) {
-            System.out.println(capitulos_reg[i]);
-            System.out.println(paginas_reg[i]);
-        }
-
-        //Comportamento do livro durante a leitura
-        livro.lerPaginas(90);
-        System.out.println(livro.lendoAtual());
-        livro.lerPaginas(300);
-        System.out.println(livro.lendoAtual());
-        livro.lerPaginas(100);
-        System.out.println(livro.getPaginas_lidas());
-
+        System.out.println("Classe Produto:");
     }
 }
-

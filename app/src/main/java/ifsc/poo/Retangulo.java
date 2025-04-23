@@ -4,9 +4,9 @@ public class Retangulo {
     private float largura;
     private float altura;
     private static float maior_area = 0;
-    private static float maior_perimetro = 0;
+    private static float menor_perimetro = 0;
     private static Retangulo retangulo_maior_area;
-    private static Retangulo retangulo_maior_perimetro;
+    private static Retangulo retangulo_menor_perimetro;
 
 
     public Retangulo(float largura, float altura){
@@ -16,27 +16,27 @@ public class Retangulo {
         if(!setAltura(altura)){
             this.altura = 1;
         }
-        maiorPerimetro();
+        menorPerimetro();
         maiorArea();
     }
 
 
     public boolean setLargura(float largura){
-        if(largura < 0) {
+        if(largura <= 0) {
             return false;
         }
         this.largura = largura;
-        maiorPerimetro();
+        menorPerimetro();
         maiorArea();
         return true;
     }
 
     public boolean setAltura(float altura){
-        if(altura < 0){
+        if(altura <= 0){
             return false;
         }
         this.altura = altura;
-        maiorPerimetro();
+        menorPerimetro();
         maiorArea();
         return true;
     }
@@ -58,29 +58,29 @@ public class Retangulo {
     }
 
     private void maiorArea(){
-        if(getArea() > maior_area){
-            maior_area = getArea();
-            retangulo_maior_area = new Retangulo(this.largura, this.altura);
+        if(this.getArea() > maior_area || retangulo_maior_area == null){
+            maior_area = this.getArea();
+            retangulo_maior_area = this;
         }
     }
 
-    private void maiorPerimetro(){
-        if(getPerimetro() > maior_perimetro){
-            maior_perimetro = getPerimetro();
-            retangulo_maior_perimetro = new Retangulo(this.largura, this.altura);
+    private void menorPerimetro(){
+        if(this.getPerimetro() < menor_perimetro || retangulo_menor_perimetro == null){
+            menor_perimetro = this.getPerimetro();
+            retangulo_menor_perimetro = this;
         }
     }
 
     public float getMaiorPerimetro(){
-        return maior_perimetro;
+        return menor_perimetro;
     }
 
     public float getMaiorArea(){
         return maior_area;
     }
 
-    public Retangulo maiorRetaguloPerimetro(){
-        return retangulo_maior_perimetro;
+    public Retangulo menorRetaguloPerimetro(){
+        return retangulo_menor_perimetro;
     }
 
     public Retangulo maiorRetaguloArea(){
