@@ -121,5 +121,13 @@ public class App {
 
         System.out.println("Classe Navio:");
 
+        int[] pos1 = {2,3};
+        Navio navio1 = new Navio(3, pos1, "Vertical", "P");
+
+        System.out.println(navio1.getTamanho());
+        System.out.println(navio1.getOrientacao());
+        System.out.println(navio1.getAparencia());
+        System.out.println(navio1.getPos());
+
     }
 }
