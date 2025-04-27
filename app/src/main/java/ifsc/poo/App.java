@@ -3,12 +3,159 @@
  */
 package ifsc.poo;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.util.Random;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println("Classe Lâmpada:");
+        Lampada lampada1 = new Lampada();     //Método construtor sem argumento, inicializa como false
+        Lampada lampada2 = new Lampada(true); //Método construtor com argumento, inicializa com parâemtro passado
+
+        System.out.println("Estado da lampada 1 sem parâmetro: " + lampada1.verEstado()); //Exibindo estados das lâmpadas
+        System.out.println("Estado da lampada 2 com parâmetro true: " + lampada2.verEstado());
+
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe Pessoa:");
+        Pessoa pessoa1 = new Pessoa("563.558.712-00"); //Criação das pessoas
+        Pessoa pessoa2 = new Pessoa("974.502.412-00", "Alice");
+        Pessoa pessoa3 = new Pessoa("878.156.184-00", "Paulo", 33);
+
+        System.out.println("Pessoa 1, nome: " + pessoa1.getNome() + ", idade: " + pessoa1.getIdade() + ", CPF: " + pessoa1.getCpf());
+        System.out.println("Pessoa 2, nome: " + pessoa2.getNome() + ", idade: " + pessoa2.getIdade() + ", CPF: " + pessoa2.getCpf());
+        System.out.println("Pessoa 3, nome: " + pessoa3.getNome() + ", idade: " + pessoa3.getIdade() + ", CPF: " + pessoa3.getCpf());
+
+        if (!pessoa1.setNome("Bruno")) {
+            System.out.println("Nome inválido");
+        }
+        if (!pessoa1.setIdade(25)) {
+            System.out.println("Idade inválida");
+        }
+
+        if (!pessoa2.setIdade(22)) {
+            System.out.println("Idade inválida");
+        }
+
+        System.out.println("Bruno está fazendo aniversário 3 vezes!");
+
+        for (int i = 0; i < 3; i++) { //Comemorando o aniversário bruno 3 vezes
+            pessoa1.felizAniversario();
+        }
+
+        System.out.println("Idade pessoa1: " + pessoa1.getIdade());
+        System.out.println("Idade pessoa2: " + pessoa2.getIdade()); //Exibindo idades da Alice e do Bruno
+
+        if (!pessoa3.setNome("")) {
+            System.out.println("Nome inválido");
+        }
+        if (!pessoa3.setIdade(-32)) {
+            System.out.println("Idade inválida");
+        }
+
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe Retangulo:");
+        Retangulo retangulo = new Retangulo(5, 4);
+        Retangulo retangulo2 = new Retangulo(0, -2);
+        Retangulo retangulo3 = new Retangulo(10, 5);
+        Retangulo retangulo4 = new Retangulo(8, 7);
+
+        System.out.println("Área retângulo 1: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
+        System.out.println("Perímetro retângulo 1: " + retangulo.getPerimetro());
+
+        System.out.println("Área retângulo inválido: " + retangulo2.getArea());  //Exibindo quais dimensões foram determinadas
+        System.out.println("Perímetro retângulo inválido: " + retangulo2.getPerimetro());
+
+        System.out.println("Maior área: " + retangulo.getMaiorArea());
+        System.out.println("Menorr perímetro: " + retangulo.getMenorPerimetro());
+
+        Retangulo menor_perimetro = retangulo.menorRetaguloPerimetro();
+        Retangulo maior_area = retangulo.maiorRetaguloArea();
+
+        System.out.println("Dimensões menor retângulo em perímetro: " + menor_perimetro.getLargura() + ", " + menor_perimetro.getAltura() + ", " + menor_perimetro.getPerimetro());
+        System.out.println("Dimensões maior retângulo em área: " + maior_area.getLargura() + ", " + maior_area.getAltura() + ", " + maior_area.getArea());
+
+        System.out.println("Se alteramos as dimensões posteriomente, a maior area e o menor perimetro se atualizam de forma correta!");
+
+        retangulo.setLargura(100);
+        retangulo2.setLargura(10);
+        retangulo2.setAltura(588);
+
+        menor_perimetro = retangulo.menorRetaguloPerimetro();
+        maior_area = retangulo.maiorRetaguloArea();
+
+        System.out.println("Dimensões menor retângulo em perímetro: " + menor_perimetro.getLargura() + ", " + menor_perimetro.getAltura() + ", " + menor_perimetro.getPerimetro());
+        System.out.println("Dimensões maior retângulo em área: " + maior_area.getLargura() + ", " + maior_area.getAltura() + ", " + maior_area.getArea());
+        System.out.println("Quantidade de retângulos criados: " + retangulo.getQtd_retangulos());
+
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe Relógio:");
+        Relogio relogio1 = new Relogio((byte) 10);
+        Relogio relogio2 = new Relogio((byte) 15, (byte) 55);
+        Relogio relogio3 = new Relogio((byte) 21, (byte) 38, (byte) 59);
+        Relogio relogio_inv = new Relogio((byte) 51, (byte) -50, (byte) 78);
+
+        System.out.println("Relogio 1: " + relogio1.getHora()); //36000
+        System.out.println("Relogio 2: " + relogio2.getHora());
+        System.out.println("Relogio 3: " + relogio3.getHora()); // 77939
+        System.out.println("Relogio inválido: " + relogio_inv.getHora());
+
+        int diferenca = relogio1.diferencaRelogio(relogio3);
+        relogio1.sincronizaRelogio(relogio3);
+
+        System.out.println("Diferença relogio 1 e 3: " + diferenca);
+        System.out.println("Relogio 1 sincronizado com 3: " + relogio1.getHora());
+
+
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe Produto:");
+
+        Produto produto1 = new Produto("Geladeira", 599);
+        Produto produto2 = new Produto("Teclado", 99);
+        produto2.setDesconto(12);
+        Produto produto3 = new Produto("Computador", 1500);
+        Produto produto4 = new Produto("Celular", 300);
+        produto4.setDesconto(12);
+        Produto produto5 = new Produto("Microondas", 250);
+        System.out.println(produto1.getCodigo());
+
+        String[] registro = produto1.getRegistro();
+
+        for (int i = 0; i < produto1.getQtdProdutos(); i++) {
+            System.out.println(registro[i]);
+        }
+
+        System.out.println("-----+-----+-----+-----+");
+
+        System.out.println("Classe Navio:");
+
+        int[] pos1 = {2,3};
+        int[] pos2 = {11,10};
+        Navio navio1 = new Navio(3, pos1, "Vertical", "P");
+        Navio navio2 = new Navio(5, pos2, "Horizontal", "N");
+
+        System.out.println("Tamanho do navio: " + navio1.getTamanho());
+        System.out.println("Orientação do navio: " + navio1.getOrientacao());
+        System.out.println("Aparência do navio: " + navio1.getAparencia());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Navio foi atingido da posição 2,3? " + navio1.foiAtingido("2,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Posições atingidas do navio: " + navio1.getPos_atingidas());
+        System.out.println("Navio foi atingido da posição 5,3? " + navio1.foiAtingido("5,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Posições atingidas do navio: " + navio1.getPos_atingidas());
+        System.out.println("Quantidade de navios: " + navio1.getQtd_navios());
+        System.out.println("Navio foi atingido da posição 3,3? " + navio1.foiAtingido("3,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Navio foi atingido da posição 4,3? " + navio1.foiAtingido("4,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Posições atingidas do navio: " + navio1.getPos_atingidas());
+        System.out.println("Quantidade de navios: " + navio1.getQtd_navios());
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
     }
 }
