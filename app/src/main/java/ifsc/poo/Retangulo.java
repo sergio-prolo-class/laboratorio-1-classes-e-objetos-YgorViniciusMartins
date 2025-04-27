@@ -7,7 +7,8 @@ public class Retangulo {
     private static float menor_perimetro = 0;
     private static Retangulo retangulo_maior_area;
     private static Retangulo retangulo_menor_perimetro;
-
+    private static Retangulo[] retangulos = new Retangulo[100];
+    private static int qtd_retangulos;
 
     public Retangulo(float largura, float altura){
         if(!setLargura(largura)){
@@ -16,6 +17,8 @@ public class Retangulo {
         if(!setAltura(altura)){
             this.altura = 1;
         }
+        retangulos[qtd_retangulos] = this;
+        qtd_retangulos++;
         menorPerimetro();
         maiorArea();
     }
@@ -58,20 +61,35 @@ public class Retangulo {
     }
 
     private void maiorArea(){
-        if(this.getArea() > maior_area || retangulo_maior_area == null){
+        if(retangulo_maior_area == null){
             maior_area = this.getArea();
             retangulo_maior_area = this;
+        } else {
+            for (int i = 0; i < qtd_retangulos; i++) {
+                if(retangulos[i].getArea() > retangulo_maior_area.getArea()){
+                    retangulo_maior_area = retangulos[i];
+                    maior_area = retangulos[i].getArea();
+                }
+            }
+
         }
     }
 
     private void menorPerimetro(){
-        if(this.getPerimetro() < menor_perimetro || retangulo_menor_perimetro == null){
+        if(retangulo_menor_perimetro == null){
             menor_perimetro = this.getPerimetro();
             retangulo_menor_perimetro = this;
+        } else {
+            for (int i = 0; i < qtd_retangulos; i++) {
+                if (retangulos[i].getPerimetro() < retangulo_menor_perimetro.getPerimetro()) {
+                    retangulo_menor_perimetro = retangulos[i];
+                    menor_perimetro = retangulos[i].getPerimetro();
+                }
+            }
         }
     }
 
-    public float getMaiorPerimetro(){
+        public float getMenorPerimetro(){
         return menor_perimetro;
     }
 
@@ -85,5 +103,13 @@ public class Retangulo {
 
     public Retangulo maiorRetaguloArea(){
         return retangulo_maior_area;
+    }
+
+    public int getQtd_retangulos(){
+        return qtd_retangulos;
+    }
+
+    public Retangulo[] getRetangulos(){
+        return retangulos;
     }
 }

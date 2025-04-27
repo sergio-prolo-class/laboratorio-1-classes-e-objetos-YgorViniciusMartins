@@ -3,9 +3,9 @@ package ifsc.poo;
 public class Navio {
     private int tamanho;
     private String pos;
+    private String pos_atingidas;
     private String orientacao;
     private String aparencia;
-    //private int[][] pos_atingidas = new int[10][10];
     private boolean afundado;
     private static int qtd_navios;
 
@@ -16,8 +16,11 @@ public class Navio {
             this.aparencia = "*";
             this.pos = "-1,-1;";
             this.afundado = true;
+        } else {
+            this.afundado = false;
+            this.pos_atingidas = "";
+            qtd_navios++;
         }
-        this.afundado = false;
     }
 
     public boolean setTamanho(int tamanho){
@@ -79,7 +82,7 @@ public class Navio {
         return this.orientacao;
     }
 
-    public  String getAparencia(){
+    public String getAparencia(){
         return this.aparencia;
     }
 
@@ -87,16 +90,40 @@ public class Navio {
         return this.pos;
     }
 
-    public boolean balaDeCanhao(String pos){ //true se acertou, false caso contrário
+    public boolean foiAtingido(String pos){ //true se acertou, false caso contrário
         String[] posicoes_navio = this.pos.split(";");
+        boolean atingido = false;
+        this.pos = "";
+        for (int i = 0; i < posicoes_navio.length; i++) {
+            if(posicoes_navio[i].equals(pos)){
+                this.recebeDano();
+                pos_atingidas += posicoes_navio[i] + ";";
+                atingido = true;
 
-        return false;
+            } else {
+                this.pos += posicoes_navio[i] + ";";
+            }
+        }
+        return atingido;
     }
 
     private void recebeDano(){
         this.tamanho--;
         if(this.tamanho == 0){
             this.afundado = true;
+            qtd_navios--;
         }
+    }
+
+    public boolean getAfundado(){
+        return this.afundado;
+    }
+
+    public int getQtd_navios(){
+        return qtd_navios;
+    }
+
+    public String getPos_atingidas(){
+        return this.pos_atingidas;
     }
 }

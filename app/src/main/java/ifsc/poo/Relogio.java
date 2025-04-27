@@ -38,14 +38,14 @@ public class Relogio {
         this.segundo = 0;
     }
 
-    public void ajustaHora(byte hora, byte minuto, byte segundo){
+    public boolean ajustaHora(byte hora, byte minuto, byte segundo){
         if(hora > 24 || minuto > 60 || segundo > 60 || hora < 0 || minuto < 0 || segundo < 0){
-            System.out.println("Hora inválida");
-            return;
+            return false;
         }
         this.hora = hora;
         this.minuto = minuto;
         this.segundo = segundo;
+        return true;
     }
 
     public String getHora(){

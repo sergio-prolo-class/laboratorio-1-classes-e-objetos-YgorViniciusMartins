@@ -57,11 +57,8 @@ public class App {
         System.out.println("Classe Retangulo:");
         Retangulo retangulo = new Retangulo(5, 4);
         Retangulo retangulo2 = new Retangulo(0, -2);
-        //Retangulo retangulo3 = new Retangulo(10, 5);
-        //Retangulo retangulo4 = new Retangulo(8, 7);
-        retangulo.setLargura(100);
-//        retangulo2.setLargura(10);
-        retangulo2.setAltura(588);
+        Retangulo retangulo3 = new Retangulo(10, 5);
+        Retangulo retangulo4 = new Retangulo(8, 7);
 
         System.out.println("Área retângulo 1: " + retangulo.getArea());  //Exibindo quais dimensões foram determinadas
         System.out.println("Perímetro retângulo 1: " + retangulo.getPerimetro());
@@ -70,13 +67,26 @@ public class App {
         System.out.println("Perímetro retângulo inválido: " + retangulo2.getPerimetro());
 
         System.out.println("Maior área: " + retangulo.getMaiorArea());
-        System.out.println("Menorr perímetro: " + retangulo.getMaiorPerimetro());
+        System.out.println("Menorr perímetro: " + retangulo.getMenorPerimetro());
 
         Retangulo menor_perimetro = retangulo.menorRetaguloPerimetro();
         Retangulo maior_area = retangulo.maiorRetaguloArea();
 
         System.out.println("Dimensões menor retângulo em perímetro: " + menor_perimetro.getLargura() + ", " + menor_perimetro.getAltura() + ", " + menor_perimetro.getPerimetro());
         System.out.println("Dimensões maior retângulo em área: " + maior_area.getLargura() + ", " + maior_area.getAltura() + ", " + maior_area.getArea());
+
+        System.out.println("Se alteramos as dimensões posteriomente, a maior area e o menor perimetro se atualizam de forma correta!");
+
+        retangulo.setLargura(100);
+        retangulo2.setLargura(10);
+        retangulo2.setAltura(588);
+
+        menor_perimetro = retangulo.menorRetaguloPerimetro();
+        maior_area = retangulo.maiorRetaguloArea();
+
+        System.out.println("Dimensões menor retângulo em perímetro: " + menor_perimetro.getLargura() + ", " + menor_perimetro.getAltura() + ", " + menor_perimetro.getPerimetro());
+        System.out.println("Dimensões maior retângulo em área: " + maior_area.getLargura() + ", " + maior_area.getAltura() + ", " + maior_area.getArea());
+        System.out.println("Quantidade de retângulos criados: " + retangulo.getQtd_retangulos());
 
         System.out.println("-----+-----+-----+-----+");
 
@@ -122,12 +132,30 @@ public class App {
         System.out.println("Classe Navio:");
 
         int[] pos1 = {2,3};
+        int[] pos2 = {11,10};
         Navio navio1 = new Navio(3, pos1, "Vertical", "P");
+        Navio navio2 = new Navio(5, pos2, "Horizontal", "N");
 
-        System.out.println(navio1.getTamanho());
-        System.out.println(navio1.getOrientacao());
-        System.out.println(navio1.getAparencia());
-        System.out.println(navio1.getPos());
-
+        System.out.println("Tamanho do navio: " + navio1.getTamanho());
+        System.out.println("Orientação do navio: " + navio1.getOrientacao());
+        System.out.println("Aparência do navio: " + navio1.getAparencia());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Navio foi atingido da posição 2,3? " + navio1.foiAtingido("2,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Posições atingidas do navio: " + navio1.getPos_atingidas());
+        System.out.println("Navio foi atingido da posição 5,3? " + navio1.foiAtingido("5,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Posições atingidas do navio: " + navio1.getPos_atingidas());
+        System.out.println("Quantidade de navios: " + navio1.getQtd_navios());
+        System.out.println("Navio foi atingido da posição 3,3? " + navio1.foiAtingido("3,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Navio foi atingido da posição 4,3? " + navio1.foiAtingido("4,3"));
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
+        System.out.println("Posições do navio: " + navio1.getPos());
+        System.out.println("Posições atingidas do navio: " + navio1.getPos_atingidas());
+        System.out.println("Quantidade de navios: " + navio1.getQtd_navios());
+        System.out.println("Navio está afundado? " + navio1.getAfundado());
     }
 }
